@@ -15,10 +15,14 @@ export const site = {
   office: "Калининград, Каменная 17",
 };
 
-/* Пока сайт живёт на localhost, поисковым роботам он закрыт. */
-export const isIndexable = Boolean(
-  configuredUrl && !/localhost|127\.0\.0\.1/.test(configuredUrl),
-);
+/**
+ * Пока сайт живёт на localhost, поисковым роботам он закрыт.
+ * NEXT_PUBLIC_NOINDEX=1 закрывает индексацию и на реальном домене —
+ * нужно для превью-стендов, которые не должны попадать в поиск.
+ */
+export const isIndexable =
+  Boolean(configuredUrl && !/localhost|127\.0\.0\.1/.test(configuredUrl)) &&
+  process.env.NEXT_PUBLIC_NOINDEX !== "1";
 
 export function absoluteUrl(path: string) {
   return `${site.url}${path.startsWith("/") ? path : `/${path}`}`;

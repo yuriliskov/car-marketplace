@@ -27,17 +27,27 @@ npm run dev
 Не вводите реальные персональные данные до подключения Bitrix24 и защищённого
 production-хранилища.
 
-## Learn More
+## Стенд для ревью на Vercel
 
-To learn more about Next.js, take a look at the following resources:
+Приложение серверное: формы заявок работают через `/api/leads` и создают лид
+в Bitrix24, поэтому статический хостинг (GitHub Pages) не подходит.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. [vercel.com/new](https://vercel.com/new) → Import Git Repository →
+   репозиторий `car-marketplace` (приватный репозиторий поддерживается).
+2. **Root Directory: `catalog-app`** — приложение лежит в подпапке, без этого
+   сборка не найдёт `package.json`. Framework определится как Next.js сам.
+3. Environment Variables:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   | Переменная | Значение |
+   |---|---|
+   | `NEXT_PUBLIC_SITE_URL` | адрес стенда, например `https://car-marketplace.vercel.app` |
+   | `NEXT_PUBLIC_NOINDEX` | `1` — чтобы стенд не попал в поисковую выдачу |
+   | `BITRIX24_WEBHOOK_URL` | вебхук из Bitrix24 (тот же, что в `.env.local`) |
+   | `BITRIX24_SOURCE_ID` | необязательно |
+   | `BITRIX24_ASSIGNED_BY_ID` | необязательно |
 
-## Deploy on Vercel
+4. Deploy. Каждый следующий `git push` в `main` обновляет стенд автоматически.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Без `BITRIX24_WEBHOOK_URL` форма отработает, но лид уйдёт только в локальный
+журнал стенда (`crm: "disabled"`). Заявки со стенда попадают в тот же Bitrix24,
+что и продакшн, — предупредите ревьюеров или завейдите отдельный вебхук.
