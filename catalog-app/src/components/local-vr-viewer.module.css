@@ -1,0 +1,239 @@
+.viewer {
+  overflow: hidden;
+  color: #fff;
+  background: #15171a;
+  border-radius: 14px;
+}
+
+.toolbar {
+  display: flex;
+  min-height: 52px;
+  padding: 0 18px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: #101114;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.toolbar > div {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.toolbar button {
+  padding: 8px 12px;
+  color: #fff;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 7px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+.liveDot {
+  width: 7px;
+  height: 7px;
+  background: #f45b2a;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(244, 91, 42, 0.15);
+}
+
+.sceneTabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 18px;
+  background: #101114;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.sceneTabs button {
+  padding: 8px 12px;
+  color: #c5cad1;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.sceneTabs button.activeScene,
+.sceneTabs button[aria-selected="true"] {
+  color: #fff;
+  background: #f45b2a;
+  border-color: #f45b2a;
+}
+
+.exterior,
+.interior {
+  position: relative;
+  height: min(70vh, 700px);
+  min-height: 520px;
+  overflow: hidden;
+  touch-action: none;
+  user-select: none;
+}
+
+.exterior {
+  display: grid;
+  background:
+    radial-gradient(circle at 50% 63%, rgba(51, 62, 70, 0.2), transparent 32%),
+    linear-gradient(155deg, #dce4e7, #f6f7f7 62%, #d3dcdf);
+  cursor: ew-resize;
+  place-items: center;
+}
+
+.exterior::after {
+  position: absolute;
+  right: 10%;
+  bottom: 7%;
+  left: 10%;
+  height: 12%;
+  background: radial-gradient(ellipse, rgba(17, 20, 23, 0.18), transparent 68%);
+  content: "";
+  filter: blur(12px);
+}
+
+.exterior > img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.interior {
+  background: #1a1c20;
+  cursor: grab;
+}
+
+.interior:active {
+  cursor: grabbing;
+}
+
+.interior canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hint {
+  position: absolute;
+  z-index: 3;
+  bottom: 18px;
+  left: 50%;
+  display: flex;
+  padding: 10px 14px;
+  color: #fff;
+  background: rgba(16, 17, 20, 0.78);
+  align-items: center;
+  gap: 9px;
+  border-radius: 20px;
+  transform: translateX(-50%);
+  backdrop-filter: blur(8px);
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.hint span {
+  color: #ff7a4c;
+  font-size: 16px;
+}
+
+.frameCounter {
+  position: absolute;
+  z-index: 3;
+  top: 18px;
+  right: 18px;
+  padding: 8px 10px;
+  color: #fff;
+  background: rgba(16, 17, 20, 0.72);
+  border-radius: 7px;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.rotateControls {
+  position: absolute;
+  z-index: 3;
+  right: 18px;
+  bottom: 18px;
+  display: flex;
+  gap: 6px;
+}
+
+.rotateControls button {
+  width: 38px;
+  height: 38px;
+  color: #fff;
+  background: rgba(16, 17, 20, 0.82);
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.loading {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  display: grid;
+  color: #b9bec5;
+  background: #1a1c20;
+  place-items: center;
+  font-size: 11px;
+}
+
+.attribution {
+  padding: 9px 18px;
+  color: #7e848c;
+  background: #101114;
+  font-size: 9px;
+  text-align: right;
+}
+
+.viewer:fullscreen {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  border-radius: 0;
+  flex-direction: column;
+}
+
+.viewer:fullscreen .exterior,
+.viewer:fullscreen .interior {
+  height: auto;
+  flex: 1;
+}
+
+@media (max-width: 720px) {
+  .toolbar {
+    padding: 0 12px;
+  }
+
+  .toolbar button {
+    padding: 7px 9px;
+  }
+
+  .exterior,
+  .interior {
+    height: 58vh;
+    min-height: 440px;
+  }
+
+  .hint {
+    max-width: calc(100% - 100px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

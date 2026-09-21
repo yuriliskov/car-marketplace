@@ -1,0 +1,144 @@
+.wrap {
+  --edge: max(32px, calc((100vw - 1320px) / 2));
+  position: relative;
+  z-index: 9;
+  color: #fff;
+  background: #191a1e;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.topBar {
+  background: #101114;
+}
+
+.topInner,
+.mainInner,
+.promoInner {
+  display: flex;
+  max-width: 1320px;
+  margin: auto;
+  padding: 0 22px;
+  align-items: center;
+}
+
+.topInner {
+  min-height: 42px;
+  gap: 26px;
+  color: #b9bdc5;
+  font-size: 12px;
+}
+
+.topPhone {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.topPhone strong {
+  color: #fff;
+  font-size: 14px;
+}
+
+.topLink:hover,
+.topPhone:hover strong {
+  color: #ff8659;
+}
+
+.topCta {
+  margin-left: auto;
+  padding: 8px 16px;
+  color: #fff;
+  background: #f45b2a;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.mainInner {
+  min-height: 84px;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.brand {
+  display: inline-flex;
+  flex: none;
+  padding: 6px 12px;
+  align-items: center;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.brand img {
+  width: auto;
+  height: 58px;
+}
+
+.menu {
+  display: flex;
+  gap: 28px;
+  color: #d5d7dc;
+  font-size: 13px;
+  font-weight: 600;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.menu::-webkit-scrollbar {
+  display: none;
+}
+
+.menu a:hover {
+  color: #ff8659;
+}
+
+.promo {
+  background: #23252a;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.promoInner {
+  min-height: 40px;
+  gap: 18px;
+  color: #b9bdc5;
+  font-size: 11px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  white-space: nowrap;
+}
+
+.promoInner::-webkit-scrollbar {
+  display: none;
+}
+
+.promoInner a {
+  position: relative;
+  padding-right: 18px;
+}
+
+.promoInner a:not(:last-child)::after {
+  position: absolute;
+  right: 0;
+  color: #565b64;
+  content: "|";
+}
+
+.promoInner a:hover {
+  color: #fff;
+}
+
+@media (max-width: 860px) {
+  .topLink {
+    display: none;
+  }
+
+  .topInner,
+  .mainInner,
+  .promoInner {
+    padding: 0 15px;
+  }
+
+  .mainInner {
+    min-height: 64px;
+  }
+}

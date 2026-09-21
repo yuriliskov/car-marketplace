@@ -1,0 +1,86 @@
+.wrap {
+  margin-top: 90px;
+  padding: 60px max(32px, calc((100vw - 1320px) / 2)) 24px;
+  color: #d5d7dc;
+  background: #191a1e;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.inner {
+  display: grid;
+  max-width: 1320px;
+  margin: auto;
+  gap: 40px;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+}
+
+.brand {
+  display: inline-flex;
+  padding: 6px 12px;
+  align-items: center;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.brand img {
+  width: auto;
+  height: 48px;
+}
+
+.brandCol p {
+  max-width: 320px;
+  margin-top: 18px;
+  color: #9da1aa;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.col h2 {
+  margin-bottom: 6px;
+  color: #fff;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.col a:hover {
+  color: #ff8659;
+}
+
+.col span {
+  color: #9da1aa;
+}
+
+.legal {
+  display: flex;
+  max-width: 1320px;
+  margin: 44px auto 0;
+  padding-top: 20px;
+  justify-content: space-between;
+  gap: 20px;
+  color: #757b85;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 11px;
+}
+
+@media (max-width: 900px) {
+  .wrap {
+    padding: 45px 15px 20px;
+  }
+
+  .inner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .legal {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

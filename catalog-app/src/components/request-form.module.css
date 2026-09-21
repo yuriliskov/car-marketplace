@@ -1,0 +1,160 @@
+.form {
+  display: grid;
+  padding: 30px;
+  gap: 22px;
+  background: #fff;
+  border: 1px solid rgba(23, 32, 29, 0.1);
+  border-radius: 18px;
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid label {
+  display: grid;
+  gap: 8px;
+}
+
+.grid label > span {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.grid label b {
+  color: var(--orange);
+}
+
+.grid input,
+.grid select {
+  height: 52px;
+  padding: 0 16px;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid rgba(23, 32, 29, 0.12);
+  border-radius: 10px;
+  font: inherit;
+  font-size: 14px;
+}
+
+.grid select {
+  cursor: pointer;
+}
+
+.grid input:focus,
+.grid select:focus {
+  border-color: var(--orange);
+  outline: none;
+}
+
+.grid input::placeholder {
+  color: #9aa1a8;
+}
+
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.consent input {
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  flex: none;
+  accent-color: var(--orange);
+}
+
+.consent label {
+  cursor: pointer;
+}
+
+.error {
+  padding: 12px 14px;
+  color: #b4231a;
+  background: rgba(244, 91, 42, 0.1);
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+/* Только кнопка отправки: ссылка на текст согласия лежит внутри .consent. */
+.form > button {
+  display: inline-flex;
+  min-height: 56px;
+  padding: 0 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #fff;
+  background: var(--orange);
+  border: 0;
+  border-radius: 12px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.form > button:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.success {
+  display: flex;
+  padding: 40px 30px;
+  align-items: center;
+  gap: 20px;
+  background: #fff;
+  border: 1px solid rgba(23, 32, 29, 0.1);
+  border-radius: 18px;
+}
+
+.success > span {
+  display: grid;
+  width: 56px;
+  height: 56px;
+  flex: none;
+  color: #fff;
+  background: var(--orange);
+  border-radius: 50%;
+  place-items: center;
+}
+
+.success strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 18px;
+  font-weight: 750;
+}
+
+.success p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+@media (max-width: 720px) {
+  .form {
+    padding: 22px 18px;
+  }
+
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .success {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 26px 18px;
+  }
+}
