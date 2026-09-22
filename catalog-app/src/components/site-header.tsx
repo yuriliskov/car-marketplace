@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { HeaderCta } from "@/components/header-cta";
 import { catalogModels, modelPath } from "@/data/catalog";
+import { publicPath } from "@/lib/paths";
 import { site } from "@/lib/site";
 import styles from "./site-header.module.css";
 
@@ -49,7 +50,7 @@ export function SiteHeader() {
         <div className={styles.mainInner}>
           <a className={styles.brand} href={site.mainSite} aria-label={`${site.name} — главная`}>
             <Image
-              src="/logo.png"
+              src={publicPath("/logo.png")}
               alt="Авто из Китая под ключ"
               width={211}
               height={98}

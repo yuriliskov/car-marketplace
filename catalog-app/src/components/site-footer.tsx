@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { catalogModels, modelPath } from "@/data/catalog";
+import { publicPath } from "@/lib/paths";
 import { site } from "@/lib/site";
 import styles from "./site-footer.module.css";
 
@@ -9,14 +10,14 @@ export function SiteFooter() {
     <footer className={styles.wrap}>
       <div className={styles.inner}>
         <div className={styles.brandCol}>
-          <Link className={styles.brand} href="/">
+          <a className={styles.brand} href={site.mainSite} aria-label={`${site.name} — главная`}>
             <Image
-              src="/logo.png"
+              src={publicPath("/logo.png")}
               alt="Авто из Китая под ключ"
               width={211}
               height={98}
             />
-          </Link>
+          </a>
           <p>
             Подбор, проверка, доставка и растаможка автомобилей из Китая под ключ.
             Оплата по этапам, отчёты на каждом шаге.
