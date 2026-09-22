@@ -6,7 +6,10 @@ export const site = {
   url: configuredUrl ?? "http://localhost:3000",
   /* Основной сайт компании на Bitrix24 — шапка ведёт «Главную» туда. */
   mainSite: "https://che168.group/",
-  mainCatalog: "https://che168.group/avto-iz-kitaya/",
+  /* Промо-ссылка на этот каталог (стенд / прод), не на Bitrix. */
+  mainCatalog: configuredUrl
+    ? `${configuredUrl}/`
+    : "https://yuriliskov.github.io/car-marketplace/",
   phone: "+7 921 100-40-02",
   phoneHref: "tel:+79211004002",
   telegram: "https://t.me/chepoint",
