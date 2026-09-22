@@ -5,6 +5,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
+import { publicPath } from "@/lib/paths";
 import styles from "./local-vr-viewer.module.css";
 
 type ViewerMode = "exterior" | "interior";
@@ -24,7 +25,7 @@ const START_VIEW: Record<InteriorScene, { lon: number; lat: number }> = {
 };
 
 const exteriorFrame = (frame: number) =>
-  `/vr/77944/exterior/${String(frame).padStart(2, "0")}.png`;
+  publicPath(`/vr/77944/exterior/${String(frame).padStart(2, "0")}.png`);
 
 function ExteriorViewer() {
   const [frame, setFrame] = useState(0);
@@ -121,7 +122,7 @@ function InteriorViewer({ scene }: { scene: InteriorScene }) {
     };
 
     const cubeTexture = new THREE.CubeTextureLoader(manager)
-      .setPath(`/vr/77944/interior/${scene}/`)
+      .setPath(publicPath(`/vr/77944/interior/${scene}/`))
       .load(
         ["right.jpg", "left.jpg", "up.jpg", "down.jpg", "front.jpg", "back.jpg"].map(
           (face) => `${face}?v=3`,

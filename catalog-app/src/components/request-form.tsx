@@ -4,6 +4,7 @@ import { FormEvent, useState } from "react";
 import { ConsentModalLink } from "@/components/consent-modal";
 import { Icon } from "@/components/icon";
 import { carBrands, contactMethods } from "@/data/request-form";
+import { publicPath } from "@/lib/paths";
 import { trackEvent } from "@/lib/track";
 import styles from "./request-form.module.css";
 
@@ -28,7 +29,7 @@ export function RequestForm() {
     const form = new FormData(event.currentTarget);
     const params = new URLSearchParams(window.location.search);
 
-    const response = await fetch("/api/leads", {
+    const response = await fetch(publicPath("/api/leads"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

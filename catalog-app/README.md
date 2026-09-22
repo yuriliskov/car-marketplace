@@ -27,27 +27,15 @@ npm run dev
 Не вводите реальные персональные данные до подключения Bitrix24 и защищённого
 production-хранилища.
 
-## Стенд для ревью на Vercel
+## Стенд для ревью на GitHub Pages
 
-Приложение серверное: формы заявок работают через `/api/leads` и создают лид
-в Bitrix24, поэтому статический хостинг (GitHub Pages) не подходит.
+Публичный URL после деплоя:
 
-1. [vercel.com/new](https://vercel.com/new) → Import Git Repository →
-   репозиторий `car-marketplace` (приватный репозиторий поддерживается).
-2. **Root Directory: `catalog-app`** — приложение лежит в подпапке, без этого
-   сборка не найдёт `package.json`. Framework определится как Next.js сам.
-3. Environment Variables:
+[https://yuriliskov.github.io/car-marketplace/](https://yuriliskov.github.io/car-marketplace/)
 
-   | Переменная | Значение |
-   |---|---|
-   | `NEXT_PUBLIC_SITE_URL` | адрес стенда, например `https://car-marketplace.vercel.app` |
-   | `NEXT_PUBLIC_NOINDEX` | `1` — чтобы стенд не попал в поисковую выдачу |
-   | `BITRIX24_WEBHOOK_URL` | вебхук из Bitrix24 (тот же, что в `.env.local`) |
-   | `BITRIX24_SOURCE_ID` | необязательно |
-   | `BITRIX24_ASSIGNED_BY_ID` | необязательно |
+Каждый `git push` в `main` собирает статический экспорт (`output: 'export'`)
+и публикует его через `.github/workflows/pages.yml`. Стенд закрыт от индексации
+(`NEXT_PUBLIC_NOINDEX=1`).
 
-4. Deploy. Каждый следующий `git push` в `main` обновляет стенд автоматически.
-
-Без `BITRIX24_WEBHOOK_URL` форма отработает, но лид уйдёт только в локальный
-журнал стенда (`crm: "disabled"`). Заявки со стенда попадают в тот же Bitrix24,
-что и продакшн, — предупредите ревьюеров или завейдите отдельный вебхук.
+Формы заявок на Pages не создают лиды в Bitrix24: GitHub Pages не выполняет
+`/api/leads`. Для проверки CRM используйте `npm run dev` локально.

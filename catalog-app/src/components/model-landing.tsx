@@ -17,6 +17,7 @@ import {
   purchaseSteps,
   purchaseVideo,
 } from "@/data/company";
+import { publicPath } from "@/lib/paths";
 import { trackEvent } from "@/lib/track";
 import {
   galleryCategories,
@@ -68,7 +69,7 @@ function FeatureTile({
             feature.imageFit === "contain" ? styles.featureBackContain : ""
           }`}
         >
-          <img src={feature.image} alt={feature.imageAlt} />
+          <img src={publicPath(feature.image)} alt={feature.imageAlt} />
           <div className={styles.featureCaption}>{feature.title}</div>
         </div>
       </div>
@@ -221,7 +222,7 @@ export function ModelLanding({
     setError(null);
     const form = new FormData(event.currentTarget);
     const params = new URLSearchParams(window.location.search);
-    const response = await fetch("/api/leads", {
+    const response = await fetch(publicPath("/api/leads"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
